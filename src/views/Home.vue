@@ -75,7 +75,7 @@ export default {
     getDisco: function (id){
       let options = {
         method: 'GET',
-        url: 'https://api.discogs.com/artists/'+id+'/releases'
+        url: 'https://api.discogs.com/artists/'+id+'/releases?page=1&per_page=100'
       };
 
       axios.request(options).then(res => {

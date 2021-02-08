@@ -5,20 +5,38 @@
     <h2> Description :</h2>
     <p> {{ description }}</p>
     <h2>Discographie :</h2>
-    <tr v-for="(album, index) in albums">
-      <p v-if="album.type === 'master'">- {{ album.title }} ({{ album.year }})</p>
-    </tr>
-
+    <div class="albums">
+      <tr v-for="(album, index) in albums">
+        <a :href="album.resource_url">
+          <span v-if="album.type === 'master' && album.role === 'Main'">- {{ album.title }} ({{ album.year }})</span>
+        </a>
+      </tr>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "ComponentTest",
   props: {
     artiste: {},
     description : "",
     albums : []
+  },
+
+  methods: {
+    getAlbum: function (urlAlbum){
+      let options = {
+        method: 'GET',
+        url: urlAlbum
+      };
+
+      axios.request(options).then(res => {
+        console.log(res.data.body)
+      })
+    }
   }
 }
 </script>
