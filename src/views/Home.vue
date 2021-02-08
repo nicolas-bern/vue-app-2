@@ -80,6 +80,7 @@ export default {
 
       axios.request(options).then(res => {
         this.albums = res.data['releases']
+        console.log("album")
         console.log(this.albums)
       })
     }
