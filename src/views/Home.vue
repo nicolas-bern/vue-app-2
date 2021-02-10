@@ -13,7 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-import ComponentTest from "@/components/ComponentTest";
+import ComponentTest from "@/components/ResultSearch";
 import axios from "axios"
 
 export default {
@@ -39,6 +39,10 @@ export default {
 
   methods: {
     searchArtist: function (){
+
+      if(this.search == "") {
+        return
+      }
 
       let options = {
         method: 'GET',
@@ -75,7 +79,7 @@ export default {
     getDisco: function (id){
       let options = {
         method: 'GET',
-        url: 'https://api.discogs.com/artists/'+id+'/releases?page=1&per_page=100'
+        url: 'https://api.discogs.com/artists/'+id+'/releases?page=1&per_page=200'
       };
 
       axios.request(options).then(res => {

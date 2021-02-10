@@ -1,5 +1,5 @@
 <template>
-  <div class="test">
+  <div id="container">
     <h1 v-if="artiste.title != null"> Nom : {{ artiste.title }}</h1>
     <img :src="artiste.cover_image">
     <h2 v-if="artiste.title != null"> Description :</h2>
@@ -19,7 +19,7 @@
 import axios from "axios";
 
 export default {
-  name: "ComponentTest",
+  name: "ResultSearch",
   props: {
     artiste: {},
     description : "",
