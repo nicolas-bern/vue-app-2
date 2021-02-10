@@ -18,9 +18,11 @@
       </tbody>
     </table>
 
+    <br>
+
     <h3>Style(s) :</h3>
-    <span v-for="(style, index) in styles">{{ style }}
-      <span v-if="!isLast(index, styles)">, </span>
+    <span id="style" v-for="(style, index) in styles">{{ style }}
+      <span id="," v-if="!isLast(index, styles)">, </span>
     </span>
 
 
