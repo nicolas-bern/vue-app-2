@@ -25,6 +25,7 @@
       <span id="," v-if="!isLast(index, styles)">, </span>
     </span>
 
+    <br>
 
     <h4>Year : {{ album.year }}</h4>
 
