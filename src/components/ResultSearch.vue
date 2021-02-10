@@ -1,18 +1,29 @@
 <template>
-  <div id="container">
-    <h1 v-if="artiste.title != null"> Nom : {{ artiste.title }}</h1>
+
+  <div id="container" v-if="artiste.title != null">
+
+    <h1> Nom : {{ artiste.title }}</h1>
+
     <img :src="artiste.cover_image">
-    <h2 v-if="artiste.title != null"> Description :</h2>
+
+    <h2> Description :</h2>
+
     <p> {{ description }}</p>
-    <h2 v-if="artiste.title != null">Discographie :</h2>
+
+    <h2>Discographie :</h2>
+
     <div class="albums">
+
       <tr v-for="(album, index) in albums">
-        <a :href="album.resource_url">
+        <router-link :to="'album/'+album.id">
           <span v-if="album.type === 'master' && album.role === 'Main'">- {{ album.title }} ({{ album.year }})</span>
-        </a>
+        </router-link>
       </tr>
+
     </div>
+
   </div>
+
 </template>
 
 <script>

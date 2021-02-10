@@ -54,7 +54,6 @@ export default {
 
         this.artist = results.find(i => i.type === "artist")
         this.id = this.artist['id']
-        console.log(this.id)
 
         this.getDetail(this.id)
       }).catch(function (error) {
@@ -69,11 +68,12 @@ export default {
       };
 
       axios.request(options).then(res => {
-        console.log(res.data['profile'])
         this.description = res.data['profile']
 
         this.getDisco(id)
-      })
+      }).catch(function (error) {
+        console.error(error);
+      });
     },
 
     getDisco: function (id){
@@ -84,9 +84,10 @@ export default {
 
       axios.request(options).then(res => {
         this.albums = res.data['releases']
-        console.log("album")
         console.log(this.albums)
-      })
+      }).catch(function (error) {
+        console.error(error);
+      });
     }
   }
 }
